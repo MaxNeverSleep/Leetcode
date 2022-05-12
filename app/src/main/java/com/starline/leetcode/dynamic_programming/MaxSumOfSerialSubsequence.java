@@ -1,8 +1,8 @@
-package com.starline.leetcode.sample;
-
-import java.util.HashMap;
+package com.starline.leetcode.dynamic_programming;
 
 /**
+ * 找到最大和的连续序列
+ *
  * @author jianyu.yang
  * @date 2022/5/11
  **/
@@ -16,23 +16,13 @@ public class MaxSumOfSerialSubsequence {
         System.out.println("max sum=" + maxSum);
     }
 
-    /**
-     * 暴力破解法
-     *
-     * @return
-     */
     private static int findMaxSumOfSerialSubsequence() {
-        int maxSum = arr[0];
 
-        for (int i = 0; i < arr.length; i++) {
 
-            
-        }
-
-        return maxSum;
+        return 0;
     }
 
-
+//
 //    /**
 //     * 暴力破解法
 //     *
