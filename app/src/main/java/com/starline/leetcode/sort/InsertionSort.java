@@ -1,5 +1,7 @@
 package com.starline.leetcode.sort;
 
+import java.util.Arrays;
+
 /**
  * 插入排序
  * <p>
@@ -21,7 +23,8 @@ public class InsertionSort {
     public static void main(String... args) {
 //        float[] arr=new float[]{ 17.5f, 19.1f, 0.6f, 1.9f, 10.5f, 12.4f, 3.8f, 19.7f, 1.5f, 25.4f, 28.6f, 4.4f, 23.8f, 5.4f};
         int[] arr = new int[]{-9, 0, 3, 9, 1, 5, 7, 2, 6, -1, -6};
-        insertionSort(arr);
+//        insertionSort(arr);
+        sort(arr);
         System.out.print("sorted result: ");
         for (int j : arr) {
             System.out.print(" " + j);
@@ -64,6 +67,37 @@ public class InsertionSort {
 //            }
 //        }
 //    }
+
+
+    public static int[] sort(int[] sourceArray) {
+        // 对 arr 进行拷贝，不改变参数内容
+        int[] arr = Arrays.copyOf(sourceArray, sourceArray.length);
+
+        // 从下标为1的元素开始选择合适的位置插入，因为下标为0的只有一个元素，默认是有序的
+        for (int i = 1; i < arr.length; i++) {
+
+            // 记录要插入的数据
+            int tmp = arr[i];
+
+            // 从已经排序的序列最右边的开始比较，找到比其小的数
+            int j = i;
+            while (j > 0 && tmp < arr[j - 1]) {
+                arr[j] = arr[j - 1];
+                j--;
+                System.out.println();
+                for (int a : arr) {
+                    System.out.print(" " + a);
+                }
+            }
+
+            // 存在比其小的数，插入
+            if (j != i) {
+                arr[j] = tmp;
+            }
+
+        }
+        return arr;
+    }
 
 
 }
