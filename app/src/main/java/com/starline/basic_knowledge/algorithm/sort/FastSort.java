@@ -8,58 +8,68 @@ package com.starline.basic_knowledge.algorithm.sort;
  **/
 public class FastSort {
 
-    //2 3 1 4 7 8 0 -1
-
-    //-1 0 1 2 7 8 4 3
-
-    //-1 0 1 2 3 4 7 8
-
-    public static int[] arr = new int[]{2, 3, 1, 4, 7, 8, 0, -1};
-
-    public static void main(String... args) {
-        startSort(0, arr.length - 1);
-        print(arr, 0, arr.length - 1);
+    public static void quickSort(int[] data) {
+        subSort(data, 0, data.length - 1);
     }
 
-    public static void startSort(int left, int right) {
-        if (left < right) {
-            int mid = sort(0, arr.length - 1);
-            sort(0, mid - 1);
-            sort(mid + 1, arr.length - 1);
+
+    public static void main(String[] args) {
+        int[] data = {3, 5, 8, 1, 2, 9, 4, 7, 6};
+        for (int i1 = 0; i1 < data.length; i1++) {
+            System.out.print(" " + data[i1]);
         }
+        System.out.println("");
+        quickSort(data);
     }
 
-    public static void print(int[] arr, int start, int end) {
-        System.out.println();
-        for (int i = start; i <= end; i++) {
-            System.out.print(" " + arr[i]);
-        }
-    }
+    private static void subSort(int[] data, int start, int end) {
+        if (start < end) {
+            int base = data[end];
+            int basePoint = end;
+            System.out.println("基础index " + basePoint + " 基数 " + base);
 
-    public static int sort(int start, int end) {
-        int pivot = arr[start];
+            while (true) {
+                while (start < end && data[start] <= base) {
+                    start++;
+                }
+                while (start < end && data[end] >= base) {
+                    end--;
+                }
+                if (start < end) {
+                    System.out.print("swap " + data[start]);
+                    System.out.println(" with " + data[end]);
 
-        int left = start;
-        int right = end;
-
-        while (left < right) {
-            while (left < right && arr[right] > pivot) {
-                right--;
+                    swap(data, start, end);
+                } else {
+                    break;
+                }
             }
-            arr[left] = arr[right];
 
-            while (left < right && arr[left] < pivot) {
-                left++;
-            }
-            arr[right] = arr[left];
+            System.out.print("swap " + data[start]);
+            System.out.println(" with " + data[basePoint]);
+
+            swap(data, start, basePoint);
+
+            System.out.println("递归开始");
+            subSort(data, 0, start - 1);
+            subSort(data, start + 1, basePoint);
         }
-
-        arr[left] = pivot;
-
-        print(arr, 0, left - 1);
-        print(arr, left + 1, arr.length - 1);
-
-        return left;
     }
+
+
+    private static void swap(int[] data, int i, int j) {
+        int temp = data[i];
+        data[i] = data[j];
+        data[j] = temp;
+
+        System.out.print("after swap");
+        for (int i1 = 0; i1 < data.length; i1++) {
+            System.out.print(" " + data[i1]);
+        }
+        System.out.println("");
+    }
+
 
 }
+
+

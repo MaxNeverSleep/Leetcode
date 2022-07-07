@@ -18,9 +18,7 @@ public class SelectionSort {
 //        float[] arr=new float[]{ 17.5f, 19.1f, 0.6f, 1.9f, 10.5f, 12.4f, 3.8f, 19.7f, 1.5f, 25.4f, 28.6f, 4.4f, 23.8f, 5.4f};
         int[] arr = new int[]{-9, 0, 3, 9, 1, 5, 7, 2, 6, -1, -6};
         selectionSoft(arr);
-        for (int j : arr) {
-            System.out.print(" " + j);
-        }
+
     }
 
     /**
@@ -30,7 +28,6 @@ public class SelectionSort {
         for (int i = 0; i < arr.length; i++) {
             int minValueIndex = i;
             for (int j = i; j < arr.length; j++) {
-                System.out.println("j:" + j);
                 if (arr[j] < arr[minValueIndex]) {
                     minValueIndex = j;
                 }
@@ -41,6 +38,11 @@ public class SelectionSort {
             int temp = arr[i];
             arr[i] = arr[minValueIndex];
             arr[minValueIndex] = temp;
+
+            for (int j : arr) {
+                System.out.print(" " + j);
+            }
+            System.out.println();
         }
     }
 
